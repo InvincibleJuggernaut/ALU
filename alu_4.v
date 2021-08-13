@@ -1,10 +1,10 @@
 `include "ripple_carry_adder_4.v"
-`include "and_2.v"
 `include "or_2.v"
 `include "not.v"
 `include "nand_2.v"
 `include "nor_2.v"
 `include "xnor_2.v"
+`include "multiplier_4.v"
 
 module alu_4(A, B, CTRL, Y);
 	
@@ -14,6 +14,7 @@ module alu_4(A, B, CTRL, Y);
 	
 	wire [4:0] add;
 	wire [4:0] sub;
+	wire [7:0] mul;
 	wire [3:0] and_op;
 	wire [3:0] or_op;
 	wire [3:0] not_op;
@@ -27,6 +28,7 @@ module alu_4(A, B, CTRL, Y);
 	
 	ripple_carry_adder_4 rca0(A, B, add_ctrl, add[4:0]);
 	ripple_carry_adder_4 rca1(A, B, sub_ctrl, sub[4:0]);
+	multiplier_4 m0(A, B, mul);
 	
 	genvar i;
 	generate
@@ -44,7 +46,7 @@ module alu_4(A, B, CTRL, Y);
 		
 	always@(*)
 		begin
-			Y = 8'b00000000;
+			Y = 7'b00000;
 			case(CTRL)
 				4'b0000 : Y = add;
 				4'b0001 : Y = sub;
@@ -55,7 +57,8 @@ module alu_4(A, B, CTRL, Y);
 				4'b0110 : Y = nor_op;
 				4'b0111 : Y = xor_op;
 				4'b1000 : Y = xnor_op;
-				default : Y = 8'b00000000;
+				4'b1001 : Y = mul;
+				default : Y = 7'b0;
 			endcase
 		end
 endmodule

@@ -60,16 +60,15 @@ begin
 	CTRL=4'b1000;
 	#20;
 
-	/*A=4'b0101;
+	A=4'b0101;
 	B=4'b1011;
 	CTRL=4'b1001;
 	#20;
 
-	A=1;
-	B=0;
-	CTRL=4'b1010;
+	A=4'b0101;
+	B=4'b1110;
+	CTRL=4'b1001;
 	#20;
-	*/
 	
 	$display("Test completed");
 
