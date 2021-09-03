@@ -12,7 +12,8 @@ export VERILOG_FILES = ./designs/src/$(DESIGN_NAME)/alu_4.v \
 			./designs/src/$(DESIGN_NAME)/or_2.v \
 			./designs/src/$(DESIGN_NAME)/ripple_carry_adder_4.v \
 			./designs/src/$(DESIGN_NAME)/xnor_2.v \
-			./designs/src/$(DESIGN_NAME)/xor_2.v
+			./designs/src/$(DESIGN_NAME)/xor_2.v \
+			./designs/src/$(DESIGN_NAME)/magnitude_comparator_4.v
 
 export SDC_FILE      = ./designs/$(PLATFORM)/$(DESIGN_NAME)/constraint.sdc
 
